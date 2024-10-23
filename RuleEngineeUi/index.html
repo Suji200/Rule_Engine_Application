@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rule Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .rule-container {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        .rule-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        select, input[type="text"] {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        .add-condition-btn, .submit-btn {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .add-condition-btn:hover, .submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Rule Builder</h2>
+    <div id="rule-builder">
+        <div class="rule-container" id="rule-1">
+            <div class="rule-group">
+                <select name="field" class="field-dropdown">
+                    <option value="age">Age</option>
+                    <option value="department">Department</option>
+                    <option value="salary">Salary</option>
+                    <option value="experience">Experience</option>
+                </select>
+                
+                <select name="operator" class="operator-dropdown">
+                    <option value=">">></option>
+                    <option value="<"><</option>
+                    <option value="=">=</option>
+                </select>
+                
+                <input type="text" name="value" class="value-input" placeholder="Value">
+            </div>
+            
+            <div class="rule-group">
+                <select name="logical-operator" class="logical-operator-dropdown">
+                    <option value="AND">AND</option>
+                    <option value="OR">OR</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <button class="add-condition-btn" id="add-condition-btn">Add Condition</button>
+    <button class="submit-btn" id="submit-btn">Submit Rule</button>
+
+    <h3>Generated Rule:</h3>
+    <pre id="rule-output"></pre>
+    <script src="rulebuilder.js"></script>
+    
+</body>
+</html>
