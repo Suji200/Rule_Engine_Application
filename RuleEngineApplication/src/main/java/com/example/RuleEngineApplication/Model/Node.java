@@ -14,13 +14,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Node {
 
     @Id
-    private String id;  // MongoDB uses String for IDs
+    private String id;
 
-    private String type;  // "operator" or "operand"
-    private String value; // condition for operand nodes ("age > 30")
+    private String type;
+    private String value;
 
-    private Node left;    // left child node
-    private Node right;   // right child node
+    private Node left;
+    private Node right;
 
     public Node(String type, String value){
         this.type = type;

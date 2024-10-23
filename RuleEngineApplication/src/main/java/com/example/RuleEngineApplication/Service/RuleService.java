@@ -11,35 +11,11 @@ import java.util.Map;
 public class RuleService {
     @Autowired
     private  RuleRepository ruleRepository;
-//    @Autowired
-//    private  Node node;
-
-//    public RuleService(RuleRepository ruleRepository) {
-//        this.ruleRepository = ruleRepository;
-//    }
-
-    // Parse the rule string into an AST (Abstract Syntax Tree)
-//    public Node parseRule(String rule) {
-//        // Simplified parsing logic
-//        if (rule.contains("AND")) {
-//            String[] parts = rule.split("AND");
-//            Node leftNode = parseRule(parts[0].trim());
-//            Node rightNode = parseRule(parts[1].trim());
-//            return new Node("operator", "AND", leftNode, rightNode);
-//        } else if (rule.contains("OR")) {
-//            String[] parts = rule.split("OR");
-//            Node leftNode = parseRule(parts[0].trim());
-//            Node rightNode = parseRule(parts[1].trim());
-//            return new Node("operator", "OR", leftNode, rightNode);
-//        } else {
-//            return new Node("operand", rule.trim());
-//        }
-//    }
 
     public Node parseRule(String rule) {
-        // Handle AND condition
+
         if (rule.contains("AND")) {
-            String[] parts = rule.split("AND", 2);  // Split at the first "AND" occurrence
+            String[] parts = rule.split("AND", 2);
             Node leftNode = parseRule(parts[0].trim());  // Recursively parse the left side
             Node rightNode = parseRule(parts[1].trim()); // Recursively parse the right side
             return new Node("operator", "AND", leftNode, rightNode);
@@ -56,8 +32,6 @@ public class RuleService {
             return new Node("operand", rule.trim());
         }
     }
-
-
 
     // Save the rule (AST) to the MongoDB database
     public Node saveRule(Node rule) {
